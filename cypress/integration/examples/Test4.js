@@ -25,7 +25,10 @@ describe("My Fourth Test Suite", function () {
         // cypress can not handle child tabs
         // therefore we need to link in the same page
         cy.get('#opentab').invoke('removeAttr', 'target').click()
-        
+        // check the correct link or not
+        cy.url().should('include', 'rahulshettyacademy')
+        // navigating browser back
+        cy.go('back')
 
       
     })
