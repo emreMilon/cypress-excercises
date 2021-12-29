@@ -2,7 +2,8 @@
 
 // alert pop ups testing
 
-//invoke cypress manipulating DOM 
+//invoke cypress manipulating DOM & handling child tabs
+
 
 describe("My Fourth Test Suite", function () {
     it("My Fourth Test case", function () {
@@ -29,6 +30,8 @@ describe("My Fourth Test Suite", function () {
         cy.url().should('include', 'rahulshettyacademy')
         // navigating browser back
         cy.go('back')
+
+
 
       
     })
