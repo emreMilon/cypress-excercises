@@ -2,6 +2,8 @@
 
 // alert pop ups testing
 
+//invoke cypress manipulating DOM 
+
 describe("My Fourth Test Suite", function () {
     it("My Fourth Test case", function () {
         cy.visit("https://rahulshettyacademy.com/AutomationPractice/")
@@ -17,6 +19,14 @@ describe("My Fourth Test Suite", function () {
             // for assertion we need to depend on mocha
             expect(str).to.equal("Hello , Are you sure you want to confirm?")
         })
+
+
+        //jquery removeAttr()
+        // cypress can not handle child tabs
+        // therefore we need to link in the same page
+        cy.get('#opentab').invoke('removeAttr', 'target').click()
+        
+
       
     })
 })
