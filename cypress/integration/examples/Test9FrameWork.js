@@ -20,6 +20,9 @@ describe("My Framefork Test Suite", function () {
         expect(this.gender).to.equal("Male")
         cy.get(':nth-child(1) > input.form-control').type(this.name)
         cy.get('select').select(this.gender)
+        cy.get(':nth-child(4) > .ng-pristine').should('have.value', this.name)
+        cy.get(':nth-child(1) > input.form-control').should('have.attr', "minlength", "2")
+        cy.get('#inlineRadio3').should('be.disabled')
 
         
     })
