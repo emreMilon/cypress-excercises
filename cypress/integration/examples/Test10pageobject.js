@@ -29,6 +29,23 @@ describe("My Framefork Test Suite", function () {
     homePage.getShopTab().click();
     this.productName.map((element) => cy.selectProduct(element));
     productPage.getCheckout().click();
+
+    let sum = 0;
+
+    productPage.getEachAmount().each(($el, index, $list) => {
+      const amount = $el.text()
+      var res = amount.split(" ")
+      res = res[1].trim()
+      sum = Number(sum) + Number(res)    
+    })
+
+    productPage.getTotalAmount().each(($el) => {
+      const amount = $el.text()
+      var res = amount.split(" ")
+      var total = Number(res[1].trim())
+      expect(total).to.equal(sum)
+    })
+
     cy.contains("Checkout").click();
     cy.get("#country").type("Germany") // this step can take time for loading.
     //Therefore we need to change default setting of cypress.json file "defaultCommandTimeout"
