@@ -29,5 +29,13 @@ describe("My Framefork Test Suite", function () {
     homePage.getShopTab().click();
     this.productName.map((element) => cy.selectProduct(element));
     productPage.getCheckout().click();
+    cy.contains("Checkout").click();
+    cy.get("#country").type("Germany") // this step can take time for loading.
+    //Therefore we need to change default setting of cypress.json file "defaultCommandTimeout"
+    // It will effect all the tests
+    //if we want to effect just this step
+    //Cypress.config('defaultCommandTimeout', 8000)
+    cy.get(".suggestions > ul > li > a").click()
+    
   });
 });
