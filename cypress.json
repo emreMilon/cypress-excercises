@@ -5,5 +5,8 @@
     "env": {
         "url" : "https://rahulshettyacademy.com/"
     },
-    "reporter": "mochawesome"
+    "reporter": "mochawesome",
+    "retries": {
+        "runMode": 1
+    }
 }
