@@ -1,7 +1,9 @@
 {
+    "projectId": "dsdej3",
     "defaultCommandTimeout": 8000,
     "pageLoadTimeout": 10000,
     "env": {
         "url" : "https://rahulshettyacademy.com/"
-    }
+    },
+    "reporter": "mochawesome"
 }

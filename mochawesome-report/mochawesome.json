@@ -1,0 +1,100 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2022-01-03T13:49:13.984Z",
+    "end": "2022-01-03T13:49:27.823Z",
+    "duration": 13839,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "7d0f1ea0-31aa-4ec0-a5d9-d01115721f52",
+      "title": "",
+      "fullFile": "cypress/integration/examples/Test10pageobject.js",
+      "file": "cypress/integration/examples/Test10pageobject.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "5dd81ce1-6c49-4f77-b2f0-839433965dc9",
+          "title": "My Framefork Test Suite",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "My Framefork Test case",
+              "fullTitle": "My Framefork Test Suite My Framefork Test case",
+              "timedOut": null,
+              "duration": 11134,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const homePage = new _HomePage.default();\nconst productPage = new _ProductPage.default();\ncy.visit(Cypress.env(\"url\") + \"angularpractice/\"); // we can send the url from terminal \n// npx cypress run --spec <file name> --env url=<url>\nhomePage.getEditBox().type(this.name);\nhomePage.getGenderBox().select(this.gender);\nhomePage.getToWayDataBinding().should(\"have.value\", this.name);\nhomePage.getEditBox().should(\"have.attr\", \"minlength\", \"2\");\nhomePage.getEntrepreneaur().should(\"be.disabled\"); //building custom cypress commands\nhomePage.getShopTab().click();\nthis.productName.map(element => cy.selectProduct(element));\nproductPage.getCheckout().click();\nlet sum = 0;\nproductPage.getEachAmount().each(($el, index, $list) => {\n  const amount = $el.text();\n  var res = amount.split(\" \");\n  res = res[1].trim();\n  sum = Number(sum) + Number(res);\n});\nproductPage.getTotalAmount().each($el => {\n  const amount = $el.text();\n  var res = amount.split(\" \");\n  var total = Number(res[1].trim());\n  expect(total).to.equal(sum);\n});\ncy.contains(\"Checkout\").click();\ncy.get(\"#country\").type(\"Germany\"); // this step can take time for loading.\n//Therefore we need to change default setting of cypress.json file \"defaultCommandTimeout\"\n// It will effect all the tests\n//if we want to effect just this step\n//Cypress.config('defaultCommandTimeout', 8000)\ncy.get(\".suggestions > ul > li > a\").click();\ncy.get('.checkbox > label').click({\n  force: true\n});\ncy.get('input[type=\"submit\"]').click(); //cy.get(\".alert\").should('have.text', 'Success! Thank you! Your order will be delivered in next few weeks :-).')\n//the above step can't work because in the browser can be spaces in the text.\n// So it may not be exactly equal.\ncy.get('.alert').then($el => {\n  const text = $el.text();\n  expect(text.includes(\"Success!\")).to.be.true; // these assertions come from chai\n});",
+              "err": {},
+              "uuid": "3180b688-540d-4464-80d0-da064436c743",
+              "parentUUID": "5dd81ce1-6c49-4f77-b2f0-839433965dc9",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "3180b688-540d-4464-80d0-da064436c743"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 11134,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.0.1"
+    },
+    "marge": {
+      "options": null,
+      "version": "6.0.1"
+    }
+  }
+}
