@@ -18,7 +18,9 @@ describe("My Framefork Test Suite", function () {
   it("My Framefork Test case", function () {
     const homePage = new HomePage();
     const productPage = new ProductPage();
-    cy.visit("https://rahulshettyacademy.com/angularpractice/");
+    cy.visit(Cypress.env("url")+ "angularpractice/");
+    // we can send the url from terminal 
+    // npx cypress run --spec <file name> --env url=<url>
 
     homePage.getEditBox().type(this.name);
     homePage.getGenderBox().select(this.gender);
