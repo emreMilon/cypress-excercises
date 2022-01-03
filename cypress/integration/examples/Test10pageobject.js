@@ -36,6 +36,18 @@ describe("My Framefork Test Suite", function () {
     //if we want to effect just this step
     //Cypress.config('defaultCommandTimeout', 8000)
     cy.get(".suggestions > ul > li > a").click()
+    cy.get('.checkbox > label').click({force:true})
+    cy.get('input[type="submit"]').click()
+    //cy.get(".alert").should('have.text', 'Success! Thank you! Your order will be delivered in next few weeks :-).')
+    //the above step can't work because in the browser can be spaces in the text.
+    // So it may not be exactly equal.
+
+    cy.get('.alert').then(($el) => {
+      const text = $el.text()
+      expect(text.includes("Success!")).to.be.true
+      // these assertions come from chai
+    })
+
     
   });
 });
