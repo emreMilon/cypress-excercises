@@ -2,23 +2,23 @@
   "stats": {
     "suites": 1,
     "tests": 2,
-    "passes": 2,
-    "pending": 0,
+    "passes": 1,
+    "pending": 1,
     "failures": 0,
-    "start": "2022-01-04T11:17:07.874Z",
-    "end": "2022-01-04T11:17:27.628Z",
-    "duration": 19754,
+    "start": "2022-01-04T11:35:00.984Z",
+    "end": "2022-01-04T11:35:11.099Z",
+    "duration": 10115,
     "testsRegistered": 2,
     "passPercent": 100,
-    "pendingPercent": 0,
+    "pendingPercent": 50,
     "other": 0,
     "hasOther": false,
-    "skipped": 0,
-    "hasSkipped": false
+    "skipped": 1,
+    "hasSkipped": true
   },
   "results": [
     {
-      "uuid": "11abac1d-838f-454b-87ee-70b2533280e1",
+      "uuid": "49c179d9-ea59-41b2-8cef-05ef2b3dbc8e",
       "title": "",
       "fullFile": "cypress/integration/examples/BDD/ecommerce.feature",
       "file": "cypress/integration/examples/BDD/ecommerce.feature",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "d13a8556-6ef9-4dba-93bf-d444be07193b",
+          "uuid": "58575236-0908-4c34-bc4b-24acfc27650a",
           "title": "End to end Ecommerce validation",
           "fullFile": "",
           "file": "",
@@ -38,25 +38,25 @@
               "title": "Ecommerce products delivery",
               "fullTitle": "End to end Ecommerce validation Ecommerce products delivery",
               "timedOut": null,
-              "duration": 12105,
-              "state": "passed",
-              "speed": "slow",
-              "pass": true,
+              "duration": 164,
+              "state": "pending",
+              "speed": null,
+              "pass": false,
               "fail": false,
               "pending": false,
               "context": null,
-              "code": "const state = window.testState;\nreturn cy\n  .then(() => state.onStartScenario(scenario, indexedSteps))\n  .then(() =>\n    resolveAndRunBeforeHooks.call(this, scenario.tags, state.feature.name)\n  )\n  .then(() =>\n    indexedSteps.forEach((step) =>\n      stepTest.call(this, state, step, rowData)\n    )\n  )\n  .then(() => state.onFinishScenario(scenario));",
+              "code": "// register this scenario with the cucumber data collector\n// but don't run it\n// Tell mocha this is a skipped test so it also shows correctly in Cypress\nconst state = window.testState;\ncy.then(() => state.onStartScenario(scenario, indexedSteps))\n  .then(() => state.onFinishScenario(scenario))\n  // eslint-disable-next-line func-names\n  .then(function () {\n    return this.skip();\n  });",
               "err": {},
-              "uuid": "07eb84d0-d927-4ba8-9735-260c9bbe9544",
-              "parentUUID": "d13a8556-6ef9-4dba-93bf-d444be07193b",
+              "uuid": "4d28b031-ff4d-488b-9515-59fd366ba51f",
+              "parentUUID": "58575236-0908-4c34-bc4b-24acfc27650a",
               "isHook": false,
-              "skipped": false
+              "skipped": true
             },
             {
               "title": "Filling the form to shop",
               "fullTitle": "End to end Ecommerce validation Filling the form to shop",
               "timedOut": null,
-              "duration": 2548,
+              "duration": 4947,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -65,21 +65,22 @@
               "context": null,
               "code": "const state = window.testState;\nreturn cy\n  .then(() => state.onStartScenario(scenario, indexedSteps))\n  .then(() =>\n    resolveAndRunBeforeHooks.call(this, scenario.tags, state.feature.name)\n  )\n  .then(() =>\n    indexedSteps.forEach((step) =>\n      stepTest.call(this, state, step, rowData)\n    )\n  )\n  .then(() => state.onFinishScenario(scenario));",
               "err": {},
-              "uuid": "d68835ed-5bcc-416a-8acd-0ba7e9b244bc",
-              "parentUUID": "d13a8556-6ef9-4dba-93bf-d444be07193b",
+              "uuid": "851a8c78-2459-4ff9-b815-4f7a733f202a",
+              "parentUUID": "58575236-0908-4c34-bc4b-24acfc27650a",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "07eb84d0-d927-4ba8-9735-260c9bbe9544",
-            "d68835ed-5bcc-416a-8acd-0ba7e9b244bc"
+            "851a8c78-2459-4ff9-b815-4f7a733f202a"
           ],
           "failures": [],
           "pending": [],
-          "skipped": [],
-          "duration": 14653,
+          "skipped": [
+            "4d28b031-ff4d-488b-9515-59fd366ba51f"
+          ],
+          "duration": 5111,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
