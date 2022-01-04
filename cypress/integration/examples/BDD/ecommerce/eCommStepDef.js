@@ -46,3 +46,20 @@ Then('select the country, submit and verify success message', () => {
       // these assertions come from chai
     })
 })
+
+
+When('I fill the form detail', function(dataTable) {
+    //[monica, female] after dataTable.rawTable[1]
+    homePage.getEditBox().type(dataTable.rawTable[1][0]);
+    homePage.getGenderBox().select(dataTable.rawTable[1][1]);
+})
+
+Then('validate the forms behavior', function() {
+    homePage.getToWayDataBinding().should("have.value", this.name);
+    homePage.getEditBox().should("have.attr", "minlength", "2");
+    homePage.getEntrepreneaur().should("be.disabled");
+})
+
+And('select the shop page', function() {
+    homePage.getShopTab().click();
+})
